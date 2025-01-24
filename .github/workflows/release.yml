@@ -2,7 +2,6 @@
 #  https://til.simonwillison.net/pypi/pypi-releases-from-github
 #  https://github.com/snok/install-poetry
 #  https://jacobian.org/til/github-actions-poetry/
-#  https://github.com/orgs/community/discussions/25305#discussioncomment-8256560
 
 name: Release Version
 
