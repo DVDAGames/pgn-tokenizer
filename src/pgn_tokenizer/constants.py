@@ -8,6 +8,8 @@ DATASET_NAME = "pgn-tokenizer"
 SEED = 1997
 VOCAB_SIZE = 4096
 
+TOKENIZER_CHUNK_PATTERN = r""" ?\d+\.|\. ?| ?[-\w]+|[#+]\s+"""
+
 SPECIAL_TOKEN_PRE = "["
 SPECIAL_TOKEN_POST = "]"
 

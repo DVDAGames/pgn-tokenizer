@@ -9,7 +9,12 @@ from tokenizers.pre_tokenizers import Split
 from tokenizers.processors import ByteLevel as ByteLevelProcessor
 from tokenizers.trainers import BpeTrainer
 
-from pgn_tokenizer.constants import DATASET_NAME, SPECIAL_TOKENS, VOCAB_SIZE
+from pgn_tokenizer.constants import (
+    DATASET_NAME,
+    SPECIAL_TOKENS,
+    TOKENIZER_CHUNK_PATTERN,
+    VOCAB_SIZE,
+)
 
 TRAINING_DATA_PATH = f"./.data/datasets/{DATASET_NAME}/"
 OUTPUT_PATH = "./src/pgn_tokenizer"
@@ -38,9 +43,7 @@ dataset = load_from_disk(
     dataset_path=SAMPLE_DATASET_PATH if args.sample else FULL_DATASET_PATH
 )
 
-print(
-    f"Training kn1ght tokenizer with {"sample" if args.sample else "full"} dataset..."
-)
+print(f"Training {DATASET_NAME} with {'sample' if args.sample else 'full'} dataset...")
 
 training_data = []
 
@@ -58,7 +61,7 @@ tokenizer = Tokenizer(
 tokenizer.normalizer = NFD()
 
 tokenizer.pre_tokenizer = Split(
-    pattern=Regex(r""" ?\d+\.|\. ?| ?[-\w]+|[#+]\s+"""), behavior="isolated"
+    pattern=Regex(TOKENIZER_CHUNK_PATTERN), behavior="isolated"
 )
 
 tokenizer.post_processor = ByteLevelProcessor(trim_offsets=True)
@@ -74,6 +77,11 @@ trainer = BpeTrainer(
 
 tokenizer.train_from_iterator(training_data, trainer=trainer)
 
+# save the vocab and merges files separately
+tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
+
+# save the tokenizer json output
+tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")
 # save the vocab and merges files separately
 tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
 
