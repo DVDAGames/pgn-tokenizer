@@ -1,12 +1,12 @@
 [project]
 name = "pgn-tokenizer"
-version = "0.1.0"
+version = "1.0.0"
 description = "A byte pair encoding tokenizer for chess portable game notation (PGN)"
 readme = "README.md"
 authors = [
     { name = "Eric allen", email = "eric@ericrallen.dev" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "transformers>=4.48.1",
 ]
@@ -14,10 +14,6 @@ dependencies = [
 [project.scripts]
 pgn-tokenizer = "pgn_tokenizer:main"
 
-[project.optional-dependencies]
-test = [
-    "pytest>=8.3.4",
-]
 
 [build-system]
 requires = ["hatchling"]
@@ -33,4 +29,7 @@ dev = [
     "pre-commit>=4.1.0",
     "ruff>=0.9.3",
     "tokenizers>=0.21.0",
+]
+test = [
+    "pytest>=8.3.4",
 ]
