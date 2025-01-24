@@ -17,7 +17,7 @@ from pgn_tokenizer.constants import (
 )
 
 TRAINING_DATA_PATH = f"./.data/datasets/{DATASET_NAME}/"
-OUTPUT_PATH = "./src/pgn_tokenizer"
+OUTPUT_PATH = "./src/pgn_tokenizer/config"
 
 FULL_DATASET_PATH = f"{TRAINING_DATA_PATH}/full"
 SAMPLE_DATASET_PATH = f"{TRAINING_DATA_PATH}/sample"
