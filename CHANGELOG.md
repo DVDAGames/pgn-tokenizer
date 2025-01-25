@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.2 (2025-01-25)
+
+### Bug Fixes
+
+- Try to sync version numbers across the CI/CD pipeline
+  ([`de5f449`](https://github.com/DVDAGames/pgn-tokenizer/commit/de5f4497dad0c1d80453dad0c3e37a48ba4feef7))
+
+
 ## v0.1.1 (2025-01-25)
 
 ### Bug Fixes

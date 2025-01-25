@@ -10,7 +10,7 @@ from transformers import PreTrainedTokenizerFast  # noqa: E402
 
 from pgn_tokenizer.constants import DATASET_NAME  # noqa: E402
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 base_path = Path(__file__).parent
 
