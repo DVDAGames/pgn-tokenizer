@@ -1,8 +1,10 @@
 [project]
 name = "pgn-tokenizer"
-version = "1.0.0"
+version = "0.1.0"
 description = "A byte pair encoding tokenizer for chess portable game notation (PGN)"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [
     { name = "Eric allen", email = "eric@ericrallen.dev" }
 ]
@@ -10,6 +12,27 @@ requires-python = ">=3.10"
 dependencies = [
     "transformers>=4.48.1",
 ]
+keywords = ["chess", "tokenizer", "pgn", "byte pair encoding", "bpe", "llm", "tokenizers"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Games/Entertainment :: Board Games",
+  "Topic :: Utilities",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+
+[project.urls]
+Homepage = "https://github.com/DVDAGames/pgn-tokenizer"
+Documentation = "https://github.com/DVDAGames/pgn-tokenizer"
+Repository = "https://github.com/DVDAGames/pgn-tokenizer.git"
+Issues = "https://github.com/DVDAGames/pgn-tokenizer.git/issues"
+Changelog = "https://github.com/DVDAGames/pgn-tokenizer.git/blob/master/CHANGELOG.md"
+
 
 [project.scripts]
 pgn-tokenizer = "pgn_tokenizer:main"
