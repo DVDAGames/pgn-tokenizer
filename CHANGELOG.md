@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.1.1 (2025-01-25)
+
+### Bug Fixes
+
+- Add MIT LICENSE file and pyproject.toml config
+  ([`07be1da`](https://github.com/DVDAGames/pgn-tokenizer/commit/07be1da09b2fa9e02f83a7a2b5ed433f76a39fe6))
+
+### Chores
+
+- Try to publish package from actions
+  ([`ec26771`](https://github.com/DVDAGames/pgn-tokenizer/commit/ec267710eecb9a0e4edc2d0d6b0f31559e45c865))
+
+- Update workflow again
+  ([`afcf28f`](https://github.com/DVDAGames/pgn-tokenizer/commit/afcf28fca6645c06e7f8f8a0b0bd1dbbb254bf26))
+
+
 ## v0.1.0 (2025-01-24)
 
 ### Chores
