@@ -7,6 +7,7 @@
 name: Publish Python Package
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
 
@@ -36,4 +37,4 @@ jobs:
           uv build
 
       - name: Publish
-        uses: pypa/gh-action-pypi-publish@release/v1
+        run: uv publish --trusted-publishing always
