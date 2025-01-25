@@ -1,6 +1,6 @@
 [project]
 name = "pgn-tokenizer"
-version = "0.1.1"
+version = "0.1.2"
 description = "A byte pair encoding tokenizer for chess portable game notation (PGN)"
 readme = "README.md"
 license = "MIT"
@@ -43,7 +43,7 @@ version_variables = [
     "src/pgn_tokenizer/__init__.py:__version__",
 ]
 version_toml = [
-    "pyproject.toml:tool.poetry.version",
+    "pyproject.toml:project.version",
 ]
 
 [build-system]
