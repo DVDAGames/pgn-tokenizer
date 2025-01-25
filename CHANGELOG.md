@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.3 (2025-01-25)
+
+### Bug Fixes
+
+- Get correct version in pyproject
+  ([`b48786d`](https://github.com/DVDAGames/pgn-tokenizer/commit/b48786dc8be6534f43f2b5930c8aa1e317c4803d))
+
+
 ## v0.1.2 (2025-01-25)
 
 ### Bug Fixes
