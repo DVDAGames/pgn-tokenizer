@@ -10,6 +10,8 @@ from transformers import PreTrainedTokenizerFast  # noqa: E402
 
 from pgn_tokenizer.constants import DATASET_NAME  # noqa: E402
 
+__version__ = "0.1.1"
+
 base_path = Path(__file__).parent
 
 tokenizer_config_path = (base_path / f"config/{DATASET_NAME}.json").resolve()

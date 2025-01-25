@@ -1,6 +1,6 @@
 [project]
 name = "pgn-tokenizer"
-version = "0.1.0"
+version = "0.1.1"
 description = "A byte pair encoding tokenizer for chess portable game notation (PGN)"
 readme = "README.md"
 license = "MIT"
@@ -37,6 +37,14 @@ Changelog = "https://github.com/DVDAGames/pgn-tokenizer.git/blob/master/CHANGELO
 [project.scripts]
 pgn-tokenizer = "pgn_tokenizer:main"
 
+
+[semantic_release]
+version_variables = [
+    "src/pgn_tokenizer/__init__.py:__version__",
+]
+version_toml = [
+    "pyproject.toml:tool.poetry.version",
+]
 
 [build-system]
 requires = ["hatchling"]
