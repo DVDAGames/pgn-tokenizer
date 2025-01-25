@@ -1,6 +1,13 @@
 import argparse
 
-from datasets import load_from_disk
+from datasets import load_dataset
+from pgn_tokenizer.constants import (
+    DATASET_NAME,
+    SEED,
+    SPECIAL_TOKENS,
+    TOKENIZER_CHUNK_PATTERN,
+    VOCAB_SIZE,
+)
 from tokenizers import Regex, Tokenizer
 from tokenizers.decoders import ByteLevel as ByteLevelDecoder
 from tokenizers.models import BPE
@@ -9,18 +16,9 @@ from tokenizers.pre_tokenizers import Split
 from tokenizers.processors import ByteLevel as ByteLevelProcessor
 from tokenizers.trainers import BpeTrainer
 
-from pgn_tokenizer.constants import (
-    DATASET_NAME,
-    SPECIAL_TOKENS,
-    TOKENIZER_CHUNK_PATTERN,
-    VOCAB_SIZE,
-)
+TRAINING_DATASET = "InterwebAlchemy/pgn-dataset-including-special-tokens"
 
-TRAINING_DATA_PATH = f"./.data/datasets/{DATASET_NAME}/"
 OUTPUT_PATH = "./src/pgn_tokenizer/config"
-
-FULL_DATASET_PATH = f"{TRAINING_DATA_PATH}/full"
-SAMPLE_DATASET_PATH = f"{TRAINING_DATA_PATH}/sample"
 
 # get args from command line
 parser = argparse.ArgumentParser()
@@ -32,6 +30,12 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "--dry-run",
+    action="store_true",
+    help="Run the script without actually saving the trained tokenizer",
+)
+
+parser.add_argument(
     "--vocab_size",
     help="Size of the vocabulary",
     default=VOCAB_SIZE,
@@ -39,11 +43,17 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-dataset = load_from_disk(
-    dataset_path=SAMPLE_DATASET_PATH if args.sample else FULL_DATASET_PATH
-)
+dataset = load_dataset(TRAINING_DATASET)
 
-print(f"Training {DATASET_NAME} with {'sample' if args.sample else 'full'} dataset...")
+if args.sample:
+    dataset = dataset["train"].train_test_split(test_size=0.1, seed=SEED)
+
+if args.dry_run:
+    print("This is a DRY RUN. No files will be saved.")
+
+print(
+    f"Training {TRAINING_DATASET} with {'sample' if args.sample else 'full'} dataset...",
+)
 
 training_data = []
 
@@ -54,14 +64,14 @@ tokenizer = Tokenizer(
     BPE(
         unk_token=SPECIAL_TOKENS["UNKNOWN"],
         fuse_unk=True,
-        pad_token=SPECIAL_TOKENS["PAD"],
-    )
+    ),
 )
 
 tokenizer.normalizer = NFD()
 
 tokenizer.pre_tokenizer = Split(
-    pattern=Regex(TOKENIZER_CHUNK_PATTERN), behavior="isolated"
+    pattern=Regex(TOKENIZER_CHUNK_PATTERN),
+    behavior="isolated",
 )
 
 tokenizer.post_processor = ByteLevelProcessor(trim_offsets=True)
@@ -77,13 +87,14 @@ trainer = BpeTrainer(
 
 tokenizer.train_from_iterator(training_data, trainer=trainer)
 
-# save the vocab and merges files separately
-tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
+if not args.dry_run:
+    # save the vocab and merges files separately
+    tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
 
-# save the tokenizer json output
-tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")
-# save the vocab and merges files separately
-tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
+    # save the tokenizer json output
+    tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")
+    # save the vocab and merges files separately
+    tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
 
-# save the tokenizer json output
-tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")
+    # save the tokenizer json output
+    tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")

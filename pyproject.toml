@@ -41,6 +41,7 @@ pgn-tokenizer = "pgn_tokenizer:main"
 [semantic_release]
 version_variables = [
     "src/pgn_tokenizer/__init__.py:__version__",
+    "scripts/publish-to-hf.py:__version__",
 ]
 version_toml = [
     "pyproject.toml:project.version",
@@ -54,6 +55,7 @@ build-backend = "hatchling.build"
 dev = [
     "black>=24.10.0",
     "datasets>=3.2.0",
+    "jinja2>=3.1.5",
     "kagglehub>=0.3.6",
     "mypy>=1.14.1",
     "polars>=1.20.0",
@@ -63,4 +65,14 @@ dev = [
 ]
 test = [
     "pytest>=8.3.4",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+ignore = [
+    "D100",   # ignore missing docs
+    "E402",   # false positives for local imports
+    "E501",   # line too long
+    "TRY003", # external messages in exceptions are too verbose
 ]
