@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from transformers import PreTrainedTokenizerFast  # noqa: E402
+from transformers import AutoTokenizer, PreTrainedTokenizerFast  # noqa: E402
 
 from pgn_tokenizer import __version__
 from pgn_tokenizer.constants import DATASET_NAME  # noqa: E402
@@ -18,6 +18,10 @@ tokenzier_merges_path = (
 ).resolve()
 
 tokenizer = PreTrainedTokenizerFast(tokenizer_file=str(tokenizer_config_path))
+
+tokenizer.save_pretrained("./.data/tokenizer")
+
+tokenizer = AutoTokenizer.from_pretrained("./.data/tokenizer")
 
 tokenizer.push_to_hub(
     "InterwebAlchemy/PGNTokenizer",

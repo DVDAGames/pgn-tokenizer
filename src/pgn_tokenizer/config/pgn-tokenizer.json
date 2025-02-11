@@ -41,7 +41,7 @@
     }
   ],
   "normalizer": {
-    "type": "NFD"
+    "type": "NFC"
   },
   "pre_tokenizer": {
     "type": "Split",

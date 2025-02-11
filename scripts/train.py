@@ -1,6 +1,14 @@
 import argparse
 
 from datasets import load_dataset
+from tokenizers import Regex, Tokenizer
+from tokenizers.decoders import ByteLevel as ByteLevelDecoder
+from tokenizers.models import BPE
+from tokenizers.normalizers import NFC
+from tokenizers.pre_tokenizers import Split
+from tokenizers.processors import ByteLevel as ByteLevelProcessor
+from tokenizers.trainers import BpeTrainer
+
 from pgn_tokenizer.constants import (
     DATASET_NAME,
     SEED,
@@ -8,13 +16,6 @@ from pgn_tokenizer.constants import (
     TOKENIZER_CHUNK_PATTERN,
     VOCAB_SIZE,
 )
-from tokenizers import Regex, Tokenizer
-from tokenizers.decoders import ByteLevel as ByteLevelDecoder
-from tokenizers.models import BPE
-from tokenizers.normalizers import NFD
-from tokenizers.pre_tokenizers import Split
-from tokenizers.processors import ByteLevel as ByteLevelProcessor
-from tokenizers.trainers import BpeTrainer
 
 TRAINING_DATASET = "InterwebAlchemy/pgn-dataset-including-special-tokens"
 
@@ -67,7 +68,7 @@ tokenizer = Tokenizer(
     ),
 )
 
-tokenizer.normalizer = NFD()
+tokenizer.normalizer = NFC()
 
 tokenizer.pre_tokenizer = Split(
     pattern=Regex(TOKENIZER_CHUNK_PATTERN),
@@ -97,4 +98,5 @@ if not args.dry_run:
     tokenizer.model.save(OUTPUT_PATH, DATASET_NAME)
 
     # save the tokenizer json output
+    tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")
     tokenizer.save(f"{OUTPUT_PATH}/{DATASET_NAME}.json")
