@@ -20,6 +20,10 @@ tokenzier_merges_path = (base_path / f"config/{DATASET_NAME}-merges.txt").resolv
 
 
 class PGNTokenizer:
+    """
+    Wrapper for the PreTrainedTokenizerFast class from the transformers library.
+    """
+
     def __init__(self):
         self.tokenizer = PreTrainedTokenizerFast(
             tokenizer_file=str(tokenizer_config_path)
