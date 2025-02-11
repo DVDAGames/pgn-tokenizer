@@ -40,9 +40,7 @@
       "special": true
     }
   ],
-  "normalizer": {
-    "type": "NFC"
-  },
+  "normalizer": null,
   "pre_tokenizer": {
     "type": "Split",
     "pattern": {
