@@ -40,7 +40,9 @@
       "special": true
     }
   ],
-  "normalizer": null,
+  "normalizer": {
+    "type": "NFD"
+  },
   "pre_tokenizer": {
     "type": "Split",
     "pattern": {

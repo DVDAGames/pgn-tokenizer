@@ -4,6 +4,7 @@ from datasets import load_dataset
 from tokenizers import Regex, Tokenizer
 from tokenizers.decoders import ByteLevel as ByteLevelDecoder
 from tokenizers.models import BPE
+from tokenizers.normalizers import NFD
 from tokenizers.pre_tokenizers import Split
 from tokenizers.processors import ByteLevel as ByteLevelProcessor
 from tokenizers.trainers import BpeTrainer
@@ -66,6 +67,8 @@ tokenizer = Tokenizer(
         fuse_unk=True,
     ),
 )
+
+tokenizer.normalizer = NFD()
 
 tokenizer.pre_tokenizer = Split(
     pattern=Regex(TOKENIZER_CHUNK_PATTERN),
