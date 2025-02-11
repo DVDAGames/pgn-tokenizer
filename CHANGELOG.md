@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.1.5 (2025-02-11)
+
+### Bug Fixes
+
+- Go back to original tokenizer config
+  ([`7371553`](https://github.com/DVDAGames/pgn-tokenizer/commit/73715532ec1907979d15e08489629d8d65be865d))
+
+Adding a comment to trigger a new deployment because chore types don't publish, but fix types do.
+
+### Chores
+
+- Remove normalizer from training pipeline
+  ([`75e25fd`](https://github.com/DVDAGames/pgn-tokenizer/commit/75e25fd5617b1e74a1e0e39a9124b59c8edb2b62))
+
+- Revert to NFD normalizer because otherwise tokens are janky
+  ([`fa2b851`](https://github.com/DVDAGames/pgn-tokenizer/commit/fa2b8512af59b6dd64974d4b53d9c37eb0555b43))
+
+- Temporarily remove HF pubish script
+  ([`5e267d0`](https://github.com/DVDAGames/pgn-tokenizer/commit/5e267d001cf79342f58f19d9724c4b3569f3ed54))
+
+
 ## v0.1.4 (2025-02-11)
 
 ### Bug Fixes
