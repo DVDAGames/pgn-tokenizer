@@ -1,6 +1,21 @@
 # CHANGELOG
 
 
+## v0.1.4 (2025-02-11)
+
+### Bug Fixes
+
+- Convert NFD normalizer to NFC normalizer
+  ([`33df3c5`](https://github.com/DVDAGames/pgn-tokenizer/commit/33df3c521e7370e18686daf2201a75129cb298fd))
+
+Transformers.js doensn't support NFD tokenizers.
+
+### Chores
+
+- Add model card template
+  ([`35e3c77`](https://github.com/DVDAGames/pgn-tokenizer/commit/35e3c77e726f3e7879b9782e9cdd968c466a79ed))
+
+
 ## v0.1.3 (2025-01-25)
 
 ### Bug Fixes
