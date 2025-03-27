@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.1.6 (2025-03-27)
+
+### Bug Fixes
+
+- Properly split test and validation data; update packages
+  ([`769f2a5`](https://github.com/DVDAGames/pgn-tokenizer/commit/769f2a5f24eb33eb9333ad6f1f4448412376cc3e))
+
+
 ## v0.1.5 (2025-02-11)
 
 ### Bug Fixes
