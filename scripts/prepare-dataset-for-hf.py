@@ -2,6 +2,7 @@ import datetime
 
 from datasets import Dataset, DatasetDict, load_dataset
 from jinja2 import Template
+
 from pgn_tokenizer.constants import (
     BASE_DATASET_FILE_NAME,
     BASE_DATASET_NAME,
@@ -61,12 +62,13 @@ def save_dataset(
 def generate_splits(dataset: Dataset, seed: int) -> DatasetDict:
     # split the dataset into train, test, and validation sets
     temp_dataset = dataset.train_test_split(test_size=0.1, seed=seed)
+    test_dataset = temp_dataset["test"].train_test_split(test_size=0.5, seed=seed)
 
     # create a new DatasetDict for the full dataset
     dataset_dict = {
         "train": temp_dataset["train"],
-        "test": temp_dataset["train"],
-        "validation": temp_dataset["test"],
+        "test": test_dataset["train"],
+        "validation": test_dataset["test"],
     }
 
     return dataset_dict
