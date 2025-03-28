@@ -1,5 +1,4 @@
 import pytest
-
 from pgn_tokenizer import PGNTokenizer
 
 
