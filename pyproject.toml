@@ -1,7 +1,7 @@
 [project]
 name = "pgn-tokenizer"
 version = "0.1.6"
-description = "A byte pair encoding tokenizer for chess portable game notation (PGN)"
+description = "PGN Tokenizer, a Byte Pair Encoding (BPE) tokenizer for Chess Portable Game Notiation (PGN)."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -40,7 +40,7 @@ pgn-tokenizer = "pgn_tokenizer:main"
 
 [semantic_release]
 version_variables = [
-    "src/pgn_tokenizer/__init__.py:__version__",
+    "packages/python/pgn_tokenizer/__init__.py:__version__",
     "scripts/publish-to-hf.py:__version__",
 ]
 version_toml = [
@@ -50,6 +50,9 @@ version_toml = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["packages/python/pgn_tokenizer"]
 
 [dependency-groups]
 dev = [

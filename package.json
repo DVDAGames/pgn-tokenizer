@@ -1,0 +1,83 @@
+{
+  "name": "@dvdagames/pgn-tokenizer",
+  "type": "module",
+  "description": "TypeScript version of PGN Tokenizer, a Byte Pair Encoding (BPE) tokenizer for Chess Portable Game Notiation (PGN).",
+  "version": "0.1.6",
+  "license": "MIT",
+  "engines": {
+    "node": ">=23.0.0",
+    "npm": ">=11.0.0",
+    "bun": ">=1.2.4"
+  },
+  "author": {
+    "name": "DVDA Games",
+    "url": "https://dvdagames.com"
+  },
+  "readme": "https://github.com/DVDAGames/pgn-tokenizer/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DVDAGames/pgn-tokenizer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DVDAGames/pgn-tokenizer/issues"
+  },
+  "homepage": "https://github.com/DVDAGames/pgn-tokenizer/",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/index.js",
+    "dist/types"
+  ],
+  "keywords": [
+    "chess",
+    "tokenizer",
+    "pgn",
+    "byte pair encoding",
+    "bpe",
+    "llm",
+    "tokenizers"
+  ],
+  "lint-staged": {
+    "package.json": "scriptlint --fix",
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write --ignore-unknown",
+      "eslint"
+    ],
+    "packages/typescript/**/*": "prettier --write --ignore-unknown"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.0",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/bun": "latest",
+    "eslint": "^9.23.0",
+    "eslint-config-love": "^119.0.0",
+    "husky": "^9.1.7",
+    "is-ci": "^4.1.0",
+    "lint-staged": "^15.5.0",
+    "prettier": "^3.5.3",
+    "rollup": "^4.37.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "scriptlint": "^3.0.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.28.0"
+  }
+}
