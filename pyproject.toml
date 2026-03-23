@@ -1,6 +1,6 @@
 [project]
 name = "pgn-tokenizer"
-version = "0.1.6"
+version = "1.0.0"
 description = "PGN Tokenizer, a Byte Pair Encoding (BPE) tokenizer for Chess Portable Game Notiation (PGN)."
 readme = "README.md"
 license = "MIT"
