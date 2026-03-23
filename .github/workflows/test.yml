@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  pytest:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -32,7 +32,19 @@ jobs:
 
       - name: Install test dependencies
         run: |
-          uv sync --group test
+          uv sync --group dev
 
       - name: Test with python ${{ matrix.python-version }}
         run: uv run --frozen pytest
+
+  buntest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install test dependencies
+        run: bun install
+
+      - name: Test with bun
+        run: bun test

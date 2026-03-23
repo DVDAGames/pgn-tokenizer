@@ -46,3 +46,14 @@ jobs:
         uses: python-semantic-release/python-semantic-release@master
         with:
           github_token: ${{ steps.app-token.outputs.token }}
+
+      - name: TypeScript Semantic Release
+        if: github.ref == 'refs/heads/main'
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: 18
+          extra_plugins: |
+            @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

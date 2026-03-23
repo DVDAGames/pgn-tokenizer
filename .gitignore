@@ -2,9 +2,14 @@
 __pycache__/
 *.py[oc]
 build/
-dist/
 wheels/
 *.egg-info
+
+# TypeScript-generated files
+node_modules/
+
+# Distribution files
+dist/
 
 # Virtual environments
 .venv

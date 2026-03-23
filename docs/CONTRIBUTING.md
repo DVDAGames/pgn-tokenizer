@@ -15,11 +15,19 @@ git clone git@github.com:<your-username>/pgn-tokenizer.git
 uv install
 ```
 
+```bash
+bun install
+```
+
 4. Make your changes:
 5. Test your changes:
 
 ```bash
 uv run pytest
+```
+
+```bash
+bun test
 ```
 
 6. Commit your changes using [Conventional Commits](https://www.conventionalcommits.org/)
